@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<body>
+    <canvas width="600" height="600" id="canvas" style="width: 600px; height: 600px;"></canvas>
+</body>
+
+<script>
+    const canvas = document.getElementById("canvas");
+    const ctx = canvas.getContext("2d");
+    const w = canvas.width, h = canvas.height;
+
+    const dpr = window.devicePixelRatio || 1;
+    canvas.width *= dpr, canvas.height *= dpr;
+    ctx.scale(dpr, dpr);
+
+    // circle format: ctx.arc(x, y, radius, startAngle, endAngle, counterclockwise)
+    // rectangle format: ctx.fillRect(x, y, width, height)
+
+    // background
+    ctx.fillStyle = "orange";
+    ctx.fillRect(0, 0, w, h);
+
+    const cx = w / 2, cy = h / 2;
+
+    // turntable body
+    ctx.fillStyle = "brown";
+    ctx.fillRect(90, 120, 420, 350);
+    ctx.fillStyle = "black";
+    ctx.fillRect(115, 145, 370, 300);
+
+    // vinyl record
+    ctx.beginPath();
+    ctx.arc(cx - 30, cy, 115, 0, Math.PI * 2, false);
+    ctx.fillStyle = "#181818";
+    ctx.fill();
+
+    // record label
+    ctx.beginPath();
+    ctx.arc(cx - 30, cy, 28, 0, Math.PI * 2, false);
+    ctx.fillStyle = "orange";
+    ctx.fill();
+
+    // center hole
+    ctx.beginPath();
+    ctx.arc(cx - 30, cy, 6, 0, Math.PI * 2, false);
+    ctx.fillStyle = "black";
+    ctx.fill();
+
+    // tonearm
+    ctx.beginPath();
+    ctx.lineTo(365, 180);
+    ctx.lineTo(455, 180);
+    ctx.lineTo(420, 330);
+    ctx.lineWidth = 12;
+    ctx.strokeStyle = "silver";
+    ctx.stroke();
+
+   // tonearm base
+    ctx.beginPath();
+    ctx.arc(365, 180, 22, 0, Math.PI * 2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+
+    // buttons
+    ctx.beginPath();
+    ctx.arc(150, 175, 12, 0, Math.PI * 2, false);
+    ctx.fillStyle = "red";
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.arc(190, 175, 12, 0, Math.PI * 2, false);
+    ctx.fillStyle = "white";
+    ctx.fill();
+
+</script>
